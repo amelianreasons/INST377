@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Team Peer Evaluation</title>
+	<style>
+		div {
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+	</style>
+
+<script>
+
+
+
+function validateForm() {
+	var startTime = document.forms["form"]["startTime"].value;
+	var endTime = document.forms["form"]["endTime"].value;
+	var name = document.forms["form"]["teamName"].value;
+	var grade = document.forms["form"]["grade"].value;
+
+	// return false;
+	var message = ""
+	var valid = true;
+
+	if (name == "") {
+			valid = false;
+			message += "Team Project Name is required.\n"
+	}
+
+	if (startTime == "") {
+		valid = false;
+		message += "Provide a start time.\n";
+	}
+
+	if (endTime == "") {
+		valid = false;
+		message += "Provide a end time.\n";
+	}
+
+
+	if (endTime < startTime) {
+		valid = false;
+		message += "Start time cannot be before end time.\n";
+	}
+
+	if (grade == "--") {
+		valid = false;
+		message += "Provide an overall team grade";
+	}
+
+	if (!valid) {
+		alert(message);
+		return false;
+	}
+
+
+}
+
+
+</script>
+
+</head>
+<body>
+	<!-- Create Your Form Below -->
+	<form name = "form" action="form_processor.php" method="POST" onsubmit="return validateForm()">
+		Team project name: <input type="text" name="teamName"><br><br>
+		Time start: <input type = "time" name = "startTime"><br><br>
+		Time end: <input type = "time" name = "endTime"><br><br>
+
+		Team member name: <input type = "text" name="member1">
+
+				<select name="ranking1">
+					<option>Rating</option>
+
+					<option value="0">Above and Beyond</option>
+					<option value="1">Satisfactory</option>
+					<option value="2">Unsatisfactory</option>
+					<option value="3">Absent</option>
+
+				</select><br><br>
+
+			Team member name: <input type = "text" name="member2" />
+
+												<select name="ranking2">
+													<option>Rating</option>
+													<option value="0">Above and Beyond</option>
+													<option value="1">Satisfactory</option>
+													<option value="2">Unsatisfactory</option>
+													<option value="3">Absent</option>
+												</select><br><br>
+
+			Team member name: <input type = "text" name="member3" />
+
+												<select name="ranking3">
+													<option>Rating</option>
+													<option value="0">Above and Beyond</option>
+													<option value="1">Satisfactory</option>
+													<option value="2">Unsatisfactory</option>
+													<option value="3">Absent</option>
+												</select><br><br>
+
+			Team member name: <input type = "text" name="member4" />
+
+												<select name="ranking4">
+													<option>Rating</option>
+													<option value="0">Above and Beyond</option>
+													<option value="1">Satisfactory</option>
+													<option value="2">Unsatisfactory</option>
+													<option value="3">Absent</option>
+												</select><br><br>
+
+
+	  Overall team grade:
+					<select name="grade">
+						<option>--</option>
+						<option>A+</option>
+						<option>A</option>
+						<option>A-</option>
+						<option>B+</option>
+						<option>B</option>
+						<option>B-</option>
+						<option>C+</option>
+						<option>C</option>
+						<option>C-</option>
+						<option>D+</option>
+						<option>D</option>
+						<option>D-</option>
+						<option>F</option>
+					</select><br><br>
+
+			Notes about the project: <input type="text" name="notes"><br>
+
+					<br><br>
+	  <input type="submit" value="Submit">
+	</form>
+
+
+</body>
+</html>
